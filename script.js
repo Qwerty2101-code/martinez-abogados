@@ -79,10 +79,14 @@
   phEls.forEach(function (el) { el.dataset.esPlaceholder = el.getAttribute("placeholder") || ""; });
 
   var FEEDBACK = {
-    es: "Gracias. Hemos recibido su mensaje y le responderemos a la brevedad.",
+    es: "Gracias. Recibimos tu mensaje y te responderemos a la brevedad.",
     en: "Thank you. We have received your message and will respond shortly."
   };
   var SENDING = { es: "Enviando...", en: "Sending..." };
+  var ERROR_MSG = {
+    es: "No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a Contacto@mabogadoss.com.",
+    en: "We couldn't send your message. Please try again or email us at Contacto@mabogadoss.com."
+  };
 
   function applyLang(lang) {
     currentLang = lang === "en" ? "en" : "es";
@@ -137,10 +141,23 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  /* ---- Formulario de contacto (sin backend por ahora) ---- */
+  /* ---- Formulario de contacto (Formspree, envío AJAX) ---- */
   var form = document.getElementById("contactForm");
   var feedback = document.getElementById("formFeedback");
   if (form) {
+    var restoreBtn = function (btn) {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = currentLang === "en" ? btn.dataset.en : btn.dataset.es;
+      }
+    };
+    var showError = function (btn) {
+      if (feedback) {
+        feedback.classList.add("form__feedback--error");
+        feedback.textContent = ERROR_MSG[currentLang];
+      }
+      restoreBtn(btn);
+    };
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.checkValidity()) {
@@ -149,14 +166,22 @@
       }
       var btn = form.querySelector("button[type=submit]");
       if (btn) { btn.disabled = true; btn.textContent = SENDING[currentLang]; }
-      setTimeout(function () {
-        form.reset();
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = currentLang === "en" ? btn.dataset.en : btn.dataset.es;
+      if (feedback) { feedback.classList.remove("form__feedback--error"); feedback.textContent = ""; }
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(function (response) {
+        if (response.ok) {
+          form.reset();
+          if (feedback) { feedback.classList.remove("form__feedback--error"); feedback.textContent = FEEDBACK[currentLang]; }
+          restoreBtn(btn);
+        } else {
+          showError(btn);
         }
-        if (feedback) feedback.textContent = FEEDBACK[currentLang];
-      }, 800);
+      }).catch(function () {
+        showError(btn);
+      });
     });
   }
 })();

@@ -359,6 +359,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .form__check input { width: auto; margin-top: 3px; accent-color: var(--gold); }
 .form__check a { color: var(--gold-strong); border-bottom: 1px solid var(--gold-strong); }
 .form__feedback { margin-top: 1rem; font-size: .9rem; font-weight: 600; color: var(--gold-strong); min-height: 1.2em; text-align: center; }
+.form__feedback--error { color: #c0392b; }
 
 /* ---------- Footer ---------- */
 .footer { background: #0a141f; color: var(--muted-light); padding-top: clamp(3.5rem, 6vw, 5rem); }
