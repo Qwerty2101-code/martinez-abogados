@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — Martínez Abogados</title>
+  <meta name="description" content="Escríbenos. Cuéntanos tu asunto y un miembro de nuestro equipo te responderá con confidencialidad." />
+  <link rel="icon" type="image/png" href="assets/favicon-256.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__contact">
+        <a href="mailto:Contacto@mabogadoss.com">Contacto@mabogadoss.com</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand" aria-label="Martínez Abogados, inicio">
+        <img src="assets/monogram-orange.png" alt="" class="brand__logo" />
+        <span class="brand__text">
+          <span class="brand__name">Martínez</span>
+          <span class="brand__sub">Abogados</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <a href="firma.html" data-en="The Firm">La firma</a>
+        <a href="areas.html" data-en="Practice Areas">Áreas de práctica</a>
+        <a href="contacto.html" class="nav__cta" data-en="Schedule a consultation">Agendar consulta</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma / Switch language">
+          <span class="lang-toggle__opt is-active" data-lang="es">ES</span>
+          <span class="lang-toggle__sep">/</span>
+          <span class="lang-toggle__opt" data-lang="en">EN</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Migas de pan">
+          <a href="index.html" data-en="Home">Inicio</a>
+          <span class="sep">/</span>
+          <span class="current" data-en="Contact">Contacto</span>
+        </nav>
+        <h1 class="page-hero__title" data-en="Let's talk about <em>your matter</em>">Conversemos sobre <em>tu asunto</em></h1>
+        <p class="page-hero__lead" data-en="Tell us briefly how we can help. A member of our team will get back to you and handle your matter with confidentiality.">
+          Cuéntanos brevemente cómo podemos ayudarte. Un miembro de nuestro equipo te responderá y
+          atenderá tu asunto con confidencialidad.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div class="contacto__info contacto__info--light">
+          <ul class="contacto__list contacto__list--dark reveal">
+            <li>
+              <span class="contacto__label" data-en="Email">Correo</span>
+              <a href="mailto:Contacto@mabogadoss.com">Contacto@mabogadoss.com</a>
+            </li>
+            <li>
+              <span class="contacto__label" data-en="Hours">Horario</span>
+              <span data-en="Monday to Friday, 9:00 to 18:00">Lunes a viernes, 9:00 a 18:00 h</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="form reveal" id="contactForm" novalidate>
+          <div class="form__row">
+            <label><span data-en="Full name">Nombre completo</span>
+              <input type="text" name="nombre" required placeholder="Tu nombre" data-en-placeholder="Your name" />
+            </label>
+          </div>
+          <div class="form__grid">
+            <label><span data-en="Email">Correo electrónico</span>
+              <input type="email" name="email" required placeholder="correo@empresa.com" data-en-placeholder="email@company.com" />
+            </label>
+            <label><span data-en="Phone">Teléfono</span>
+              <input type="tel" name="telefono" placeholder="Tu teléfono" />
+            </label>
+          </div>
+          <div class="form__row">
+            <label><span data-en="Subject">Asunto</span>
+              <select name="asunto">
+                <option value="" data-en="Select a practice area">Selecciona un área</option>
+                <option data-en="Corporate Law">Derecho corporativo</option>
+                <option data-en="Oil &amp; Gas">Petróleo y Gas</option>
+                <option data-en="Project Evaluation">Evaluación de proyectos</option>
+                <option data-en="Contract Administration">Administración de contratos</option>
+                <option data-en="Administrative Litigation">Litigio administrativo</option>
+                <option data-en="Digital Solutions">Soluciones digitales</option>
+                <option data-en="Other">Otro</option>
+              </select>
+            </label>
+          </div>
+          <div class="form__row">
+            <label><span data-en="Message">Mensaje</span>
+              <textarea name="mensaje" rows="4" required placeholder="Describe brevemente tu situación" data-en-placeholder="Briefly describe your situation"></textarea>
+            </label>
+          </div>
+          <label class="form__check">
+            <input type="checkbox" name="aviso" required />
+            <span data-en="I have read and accept the <a href=&quot;aviso-privacidad.html&quot;>privacy notice</a>.">He leído y acepto el <a href="aviso-privacidad.html">aviso de privacidad</a>.</span>
+          </label>
+          <button type="submit" class="btn btn--accent btn--block" data-en="Send message">Enviar mensaje</button>
+          <p class="form__feedback" id="formFeedback" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="brand brand--light">
+          <img src="assets/monogram-orange.png" alt="" class="brand__logo" />
+          <span class="brand__text">
+            <span class="brand__name">Martínez</span>
+            <span class="brand__sub">Abogados</span>
+          </span>
+        </a>
+        <p data-en="Legal and corporate advisory for companies and regulated industries.">Asesoría jurídica y corporativa para empresas e industrias reguladas.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Pie de página">
+        <div>
+          <h4 data-en="Firm">Firma</h4>
+          <a href="firma.html" data-en="The Firm">La firma</a>
+          <a href="firma.html#enfoque" data-en="Approach">Enfoque</a>
+        </div>
+        <div>
+          <h4 data-en="Practice">Práctica</h4>
+          <a href="areas.html" data-en="Practice Areas">Áreas de práctica</a>
+          <a href="contacto.html" data-en="Contact">Contacto</a>
+        </div>
+        <div>
+          <h4 data-en="Contact">Contacto</h4>
+          <a href="mailto:Contacto@mabogadoss.com">Contacto@mabogadoss.com</a>
+        </div>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>&copy; <span id="year"></span> Martínez Abogados. <span data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+      <div class="footer__legal">
+        <a href="aviso-privacidad.html" data-en="Privacy notice">Aviso de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
